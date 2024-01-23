@@ -12,7 +12,8 @@
 // How it's generally done, without this keywords
 class User {
 
-    private _courseCount = 1
+    // Protected can be used in this class and all classes that inherit from this class
+    protected _courseCount = 1
     readonly city: string = "Long Beach"
     constructor(
         public email: string,
@@ -38,6 +39,15 @@ class User {
         this._courseCount = courseNum;
     }
 }
+
+class SubUser extends User {
+    isFamily: boolean = true
+    changeCourseCount() {
+        // If below property is private, it cannot be used. Properties with private keyword can only be used within that class, not children
+        this._courseCount = 4
+    }
+}
+
 
 const daniel = new User("daniel@gmail.com", "Daniel")
 // daniel.city = "Long Beach"
