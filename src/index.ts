@@ -11,7 +11,31 @@
 
 // How it's generally done, without this keywords
 class User {
-    constructor(public email: string, public name: string) {
+
+    private _courseCount = 1
+    readonly city: string = "Long Beach"
+    constructor(
+        public email: string,
+        public name: string
+        ){
+    }
+
+    private deleteToken(){
+        console.log("token deleted")
+    }
+
+    get getAppleEmail(): string{
+        return `${this.email}`
+    }
+    get courseCount(): number{
+        return this._courseCount;
+    }
+    // setters do not have a return type
+    set courseCount(courseNum) {
+        if (courseNum <= 1) {
+            throw new Error("blah example")
+        }
+        this._courseCount = courseNum;
     }
 }
 
